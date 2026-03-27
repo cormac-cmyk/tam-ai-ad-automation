@@ -1,182 +1,65 @@
 ---
 name: create-meta-ads-community-setup
-description: Community setup guide for building the TAM AI Ad Automation system. Use this skill when a community member wants to set up their own version of the Create Meta Ads automation workflow. Walks through account setup, credential collection, skill installation, and first test run step by step.
+description: Interactive chat guide for setting up the TAM AI Ad Automation system. Use this skill when a community member wants to set up their own version of the Create Meta Ads automation workflow. It acts as a strict step-by-step wizard.
 ---
 
-# TAM Community — AI Ad Automation Setup Guide
+# TAM Community — AI Ad Automation Setup Wizard
 
-This skill walks you through setting up your own automated Meta Ads creation system from scratch. By the end, you will be able to give Manus a Google Drive folder link and have it automatically create fully-named, copy-written, PAUSED ads inside your Meta campaigns.
+This skill is an interactive, step-by-step wizard that helps TAM community members build their own `create-meta-ads` skill. 
 
----
+## Core Directives (CRITICAL)
+1. **Be a strict guide:** You are a setup wizard. Your ONLY job is to get the user through the 5 setup steps.
+2. **Never get distracted:** If the user asks a question unrelated to the current step, politely decline to answer and immediately ask them for the information required for the current step.
+3. **One step at a time:** Never ask for multiple credentials at once. Ask for one thing, wait for the user to provide it, validate it, and then move to the next step.
+4. **Always push forward:** Every single response you give MUST end with a clear call to action for the next step.
 
-## What You Are Building
+## The Setup State Machine
 
-You are building a system where:
-1. You drop creative assets (videos or images) into a Google Drive folder
-2. You tell Manus which campaign to use and what the destination URL is
-3. Manus downloads every file, uploads them to Meta, writes ad copy, and creates one PAUSED ad per asset
-4. You choose whether to activate the ads
+When the user triggers this skill, start at Step 1.
 
----
+### Step 1: Introduction & Google Client ID
+**Your Action:** 
+Say: "Welcome to the TAM AI Ad Automation setup! I'm going to help you build your own `create-meta-ads` skill. Let's do this step-by-step. First, please paste your **Google Client ID** (it should end in `.apps.googleusercontent.com`)."
+**Wait for user response.**
 
-## Tech Stack Required
+### Step 2: Google Client Secret
+**Your Action:**
+When the user provides the Client ID, save it in your context.
+Say: "Great, I have your Client ID. Now, please paste your **Google Client Secret** (it usually starts with `GOCSPX-`)."
+**Wait for user response.**
 
-Before starting, confirm you have access to all of the following:
+### Step 3: Google OAuth Flow
+**Your Action:**
+When the user provides the Client Secret, save it.
+Generate the Google OAuth URL using the provided Client ID. The URL format is:
+`https://accounts.google.com/o/oauth2/auth?client_id=[CLIENT_ID]&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.readonly&access_type=offline&prompt=consent`
+Say: "Perfect. Now we need to authorise Manus to read your Google Drive. Please click this link, sign in with the Google account that holds your ad creatives, click 'Allow', and then paste the **authorisation code** it gives you back here."
+Provide the link.
+**Wait for user response.**
 
-| Tool | Purpose | Link |
-|---|---|---|
-| **Manus AI** | The AI agent that runs your skills | manus.im |
-| **Google Drive** | Where you store creative assets | drive.google.com |
-| **Google Cloud Console** | Where you create your OAuth app | console.cloud.google.com |
-| **Meta Business Manager** | Where your ad account and campaigns live | business.facebook.com |
-| **Meta Developers** | Where you create your app and system user token | developers.facebook.com |
+### Step 4: Exchange Code & Meta Token
+**Your Action:**
+When the user provides the code, use Python to exchange it for a `refresh_token`. (Do not show the user the code, just do it in the background).
+Say: "Google Drive is connected! ✅ Now let's connect Meta. Please paste your **Meta System User Token** (the long string you generated in Meta Developers)."
+**Wait for user response.**
 
----
+### Step 5: Ad Account & Campaign IDs
+**Your Action:**
+When the user provides the Meta token, save it.
+Say: "Got the Meta token. Finally, I need your IDs. Please provide:
+1. Your **Ad Account ID** (format: `act_XXXXXXXXXX`)
+2. Your **Testing Campaign ID**
+3. Your **Performance Campaign ID**
+4. Your **Workshop Campaign ID**"
+**Wait for user response.**
 
-## Day 1 — Account Setup
+### Step 6: Build the Skill
+**Your Action:**
+When the user provides the IDs, you have everything you need.
+1. Write a Python script to fetch the Page ID and Instagram Actor ID from their existing ads using the provided Meta token and Ad Account ID.
+2. Write the final `create_ads.py` script and `SKILL.md` file into their `/home/ubuntu/skills/create-meta-ads/` directory, embedding all the credentials they just provided.
+3. Say: "🎉 **Setup Complete!** I have successfully built your `create-meta-ads` skill. You can now test it by saying: *'Create new Meta ads for the Testing campaign. Here is the Google Drive folder: [link]. The destination URL is [link].'* Let me know when you're ready to run your first test!"
 
-Work through each of these steps. Do not proceed to Day 2 until all required steps are complete.
-
-### Step 1.1 — Google Cloud Setup
-1. Go to **console.cloud.google.com**
-2. Create a new project (e.g. `Manus-Ads-Bot`)
-3. Navigate to **APIs & Services → Library**
-4. Search for **Google Drive API** and click **Enable**
-5. Go to **APIs & Services → Credentials → Create Credentials → OAuth Client ID**
-6. Select **Desktop App** as the application type
-7. Save your **Client ID** and **Client Secret** securely — you will need these in Day 2
-
-> **Important:** Google no longer shows Client Secrets after creation. If yours is hidden, click **+ Add Secret** to generate a new one. It is only shown once — copy it immediately.
-
-### Step 1.2 — Meta Developer Setup
-1. Go to **developers.facebook.com → My Apps → Create App**
-2. Choose **Business** as the app type
-3. Connect the app to your Business Manager
-4. Add the **Marketing API** product to the app
-5. Go to **Business Manager → Business Settings → Users → System Users → Add**
-6. Give the system user **Admin** role
-7. Click **Generate Token**, select your app, and enable these permissions:
-   - `ads_management`
-   - `ads_read`
-   - `business_management`
-8. Copy the token immediately — it is not shown again
-
-### Step 1.3 — Gather Your IDs
-Collect the following before Day 2:
-- **Ad Account ID** — found in Business Settings → Ad Accounts (format: `act_XXXXXXXXXX`)
-- **Campaign IDs** — click into each campaign in Ads Manager; the ID is in the URL
-- You need IDs for: Testing campaign, Performance campaign, Workshop campaign
-
----
-
-## Day 2 — Credential Setup with Manus
-
-### Step 2.1 — Start a Manus session
-Open a new task in Manus and say:
-
-> "I want to build a Create Meta Ads skill. Help me set it up. I have my Google Client ID, Client Secret, Meta System User token, and Campaign IDs ready."
-
-### Step 2.2 — Google OAuth Flow
-Manus will:
-1. Ask for your **Client ID** and **Client Secret**
-2. Generate a one-time authorisation URL
-3. Ask you to visit it in your browser and approve Google Drive access
-4. Ask you to paste back the authorisation code
-5. Exchange it for a **refresh token** and store it permanently
-
-You only do this once. After this, Manus can access Google Drive without any login.
-
-### Step 2.3 — Meta Token Setup
-Provide Manus with:
-- Your **Meta System User token**
-- Your **Ad Account ID** (format: `act_XXXXXXXXXX`)
-- Your **Campaign IDs** for Testing, Performance, and Workshop
-
-Manus will automatically pull your **Page ID** and **Instagram Actor ID** from your existing ads — you do not need to find these manually.
-
-### Step 2.4 — Verification
-Manus will run a verification script to confirm it can:
-- List files in a Google Drive folder
-- See your Meta campaigns and ad sets
-
-If either fails, Manus will tell you exactly what is wrong and how to fix it.
-
----
-
-## Day 3 — Build and Test
-
-### Step 3.1 — Install the Skills
-Make sure both of these skills are installed in Manus:
-1. **meta-ad-scripter** — generates ad copy (headlines and primary text)
-2. **create-meta-ads** — the main automation skill (this is what Manus builds for you in Day 2)
-
-### Step 3.2 — First Test Run
-Prepare a Google Drive folder with 1–2 test assets (video or image). Then say to Manus:
-
-> "Create new Meta ads for the Testing campaign. Here is the Google Drive folder: [your link]. The destination URL is [your landing page URL]."
-
-Manus will:
-1. Download all files from the folder
-2. Generate a headline and primary text for each ad using the Ad Scripter skill
-3. Upload each file to the Meta Media Library (using chunked upload for large videos)
-4. Create one PAUSED ad per asset with the naming format:
-   `#N__UID__Direct Response__Single__Direct to Camera__VIDEO or STATIC__DD-MON-YY`
-5. Show you a summary table of all created ads
-6. Ask if you want to activate them
-
-### Step 3.3 — Verify in Meta Ads Manager
-Go to your Testing campaign in Meta Ads Manager. Confirm:
-- The ad appears with the correct naming convention
-- The creative (video or image) is attached
-- The ad copy (headline and primary text) is present
-- The destination URL is correct
-- The ad status is **PAUSED**
-
-### Step 3.4 — Full Production Run
-Once your test passes, run it with a full folder of assets. The system scales to any number of files — 7 videos creates 7 ads, each with unique copy, all in one command.
-
----
-
-## Ad Naming Convention Reference
-
-Every ad created by this system follows this format:
-
-```
-#[N]__[UID]__Direct Response__Single__Direct to Camera__[TYPE]__[DATE]
-```
-
-| Part | Meaning |
-|---|---|
-| `#N` | Auto-incrementing number from the highest existing ad in the ad set |
-| `UID` | The filename from Google Drive (without extension) |
-| `Direct Response` | The offer type — always Direct Response |
-| `Single` | The ad format — always Single |
-| `Direct to Camera` | The creative style |
-| `VIDEO` or `STATIC` | Detected automatically from the file type |
-| `DATE` | The date the ad was created (e.g. `26-MAR-26`) |
-
----
-
-## Troubleshooting
-
-**Google Drive download fails:**
-Check that your OAuth app has the Google Drive API enabled and that the folder is shared with your Google account.
-
-**Meta upload fails with size error:**
-The script uses chunked upload (10 MB per chunk) which handles files of any size. If it still fails, check that your system user token has not expired.
-
-**Wrong page or Instagram ID:**
-Manus pulls these automatically from your existing ads. If it gets the wrong ones, ask Manus to re-fetch them by looking at a specific ad you know is correct.
-
-**Ad copy sounds generic:**
-The Meta Ad Scripter skill uses a Google Doc of top-performing examples. Ask Manus to update the scripter skill with more examples from your best-performing ads.
-
----
-
-## What's Next
-
-Once this system is running, you can extend it by:
-- Building a **Meta Ad Scripter** skill customised for your specific offer and audience
-- Creating a **Workshop Campaign** version with different copy angles
-- Adding a **Slack or email notification** when new ads are created
-- Scheduling weekly ad launches from a recurring Google Drive folder
+## Handling Interruptions
+If the user says something like "How do I write good ad copy?" or "What is a campaign ID?" while in the middle of a step:
+**Your Action:** "I'd love to help with that later, but right now we need to finish setting up your automation. Please provide your [Current Required Item] so we can move to the next step."
