@@ -109,15 +109,18 @@ Now we need to connect Google Drive so I can download your ad creatives automati
 
 Please follow these exact steps carefully (refer to **Steps 6, 7, and 8** on the landing page):
 1. Go to [console.cloud.google.com](https://console.cloud.google.com) and log in.
-2. On the "Select a project" screen, click the **Create project** button in the top right. Name it 'TAM Manus Bot', leave the Organisation field exactly as it is, and click **Create**.
-3. Wait a few seconds until you land on the Welcome dashboard for 'TAM-Manus Bot'.
-4. Look for the "Quick access" tiles in the middle of the page and click **APIs and services**.
-5. Click **+ ENABLE APIS AND SERVICES** at the top. Search for **Google Drive API**, click it, and click **Enable**.
-6. In the left sidebar, click **Credentials**.
-7. You will see a yellow warning banner at the top. Click the **Configure consent screen** button inside that banner.
-8. You are now in the 4-step "Project configuration" wizard. Under **1. App Information**, type 'TAM Ad Automation' for the App name and select your email. Click the blue **Next** button through all the steps, then click **Create** at the end.
-9. You will land on the "OAuth overview" page. Click the **Create OAuth client** button on the right side of the screen.
-10. Select **Desktop app** as the application type, name it 'Manus Desktop Client', and click **Create**.
+2. How to create a new project depends on what you see:
+   - **If you see a "Select a project" screen:** Click the **Create project** button in the top right.
+   - **If you see a "Welcome" dashboard:** Click the project name in the top blue bar, then click **New Project** in the popup.
+3. Name it 'TAM Manus Bot', leave the Organisation field exactly as it is, and click **Create**.
+4. Wait a few seconds until you land on the Welcome dashboard for 'TAM-Manus Bot'.
+5. Look for the "Quick access" tiles in the middle of the page and click **APIs and services**.
+6. Click **+ ENABLE APIS AND SERVICES** at the top. Search for **Google Drive API**, click it, and click **Enable**.
+7. In the left sidebar, click **Credentials**.
+8. You will see a yellow warning banner at the top. Click the **Configure consent screen** button inside that banner.
+9. You are now in the 4-step "Project configuration" wizard. Under **1. App Information**, type 'TAM Ad Automation' for the App name and select your email. Click the blue **Next** button through all the steps, then click **Create** at the end.
+10. You will land on the "OAuth overview" page. Click the **Create OAuth client** button on the right side of the screen.
+11. Select **Desktop app** as the application type, name it 'Manus Desktop Client', and click **Create**.
 
 🚨 **URGENT:** A popup will appear showing your Client ID and Client Secret. **Do not close this popup yet!**
 

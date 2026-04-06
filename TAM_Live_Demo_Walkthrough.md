@@ -95,7 +95,9 @@ This is why we need Google: your video editor saves files to a Google Drive fold
 
 Let's start by creating a Google Cloud Project (refer to Step 6 on the landing page):
 1. Go to console.cloud.google.com and log in with the Google account that owns your Drive.
-2. On the "Select a project" screen, click the Create project button in the top right.
+2. How to create a new project depends on what you see:
+   - If you see a "Select a project" screen: Click the 'Create project' button in the top right.
+   - If you see a "Welcome" dashboard: Click the project name in the top blue bar, then click 'New Project' in the popup.
 3. Name it 'TAM Manus Bot'. Leave the Organisation field exactly as it is.
 4. Click Create.
 5. Wait a few seconds, then confirm you are on the Welcome dashboard for 'TAM-Manus Bot'.
