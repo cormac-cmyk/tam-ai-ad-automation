@@ -95,10 +95,10 @@ This is why we need Google: your video editor saves files to a Google Drive fold
 
 Let's start by creating a Google Cloud Project (refer to Step 6 on the landing page):
 1. Go to console.cloud.google.com and log in with the Google account that owns your Drive.
-2. Look at the top blue bar next to the Google Cloud logo — click the project name or 'Select a project'.
-3. In the popup, click New Project in the top right.
-4. Name it 'TAM Manus Bot' and click Create.
-5. Wait a few seconds, then confirm 'TAM Manus Bot' is selected in the top bar.
+2. On the "Select a project" screen, click the Create project button in the top right.
+3. Name it 'TAM Manus Bot'. Leave the Organisation field exactly as it is.
+4. Click Create.
+5. Wait a few seconds, then confirm you are on the Welcome dashboard for 'TAM-Manus Bot'.
 
 Reply 'Done' when your project is created."
 
@@ -113,21 +113,19 @@ Reply 'Done' when your project is created."
 **Manus will say:** "Project created! Now we need to do three things inside Google Cloud:
 
 **Part A — Enable the Drive API** (refer to Step 7 on the landing page):
-1. Click the ≡ three horizontal lines (hamburger menu) in the top left.
-2. Hover over 'APIs & Services' and click 'Library'.
+1. On your project's Welcome dashboard, click the 'APIs and services' tile.
+2. Click '+ ENABLE APIS AND SERVICES' at the top.
 3. Search for 'Google Drive API', click it, then click Enable.
 
 **Part B — Configure OAuth Consent Screen** (refer to Step 8 on the landing page):
-1. Click ≡ again → APIs & Services → OAuth consent screen.
-2. Select External → Create.
-3. App name: 'TAM Ad Automation'. User support email: your email. Developer contact: your email. Click Save and Continue through all screens.
-4. On the Summary screen, click Back to Dashboard.
+1. In the left sidebar, click 'Credentials'.
+2. Click the 'Configure consent screen' button inside the yellow warning banner.
+3. In the 4-step wizard: App name is 'TAM Ad Automation', select your email. Click Next through all steps, then click Create at the end.
 
 **Part C — Create OAuth Client ID**:
-1. Click ≡ → APIs & Services → Credentials.
-2. Click + Create Credentials → OAuth client ID.
-3. Application type: Desktop app. Name: 'Manus Desktop Client'. Click Create.
-4. 🚨 A popup will appear — DO NOT CLOSE IT. Copy both the Client ID and Client Secret into a Notes app right now.
+1. You will land on the OAuth overview page. Click 'Create OAuth client'.
+2. Application type: Desktop app. Name: 'Manus Desktop Client'. Click Create.
+3. 🚨 A popup will appear — DO NOT CLOSE IT. Copy both the Client ID and Client Secret into a Notes app right now.
 
 Paste your Client ID here when ready."
 
