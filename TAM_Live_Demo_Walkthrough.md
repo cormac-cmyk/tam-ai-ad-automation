@@ -88,12 +88,20 @@ Copy that token and paste it here."
 
 ---
 
-### Step 6: Google Cloud Project
+
+### Step 6: Default Landing Page URL
+**Manus:** "Campaign IDs saved. ✅ Next, I need the default landing page URL where you want to send traffic from these ads."
+
+**You:**
+1. Copy your landing page URL (e.g., `https://theagencymentor.com.au/agency-audit-and-growth-call`).
+2. Paste it into the chat.
+
+### Step 7: Google Cloud Project
 **Manus will say:** "Campaign IDs saved! We are done with the Meta side. Now we need to connect Google Drive so I can download your ad creatives.
 
 This is why we need Google: your video editor saves files to a Google Drive folder. Instead of you manually downloading and uploading each file to Meta, Manus does it automatically. To make that work, we need to give Manus a secure key to access your Drive.
 
-Let's start by creating a Google Cloud Project (refer to Step 6 on the landing page):
+Let's start by creating a Google Cloud Project (refer to Step 7 on the landing page):
 1. Go to console.cloud.google.com and log in with the Google account that owns your Drive.
 2. How to create a new project depends on what you see:
    - If you see a "Select a project" screen: Click the 'Create project' button in the top right.
