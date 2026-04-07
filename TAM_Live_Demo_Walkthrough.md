@@ -33,7 +33,9 @@ Once you have created the app, you will land on the App Dashboard. You don't nee
 **What you say on the call:** *"Alright guys, so Manus is walking us through the exact screens inside Meta Developers. Notice it tells you to tick BOTH the top two use cases — 'Create & manage ads with Marketing API' AND 'Create & manage app ads with Meta Ads Manager'. That's the step most people miss. I've already done this, so I'm going to tell it I'm done."*
 
 **What you type into Manus:**
-> Done
+```text
+Done
+```
 
 ---
 
@@ -51,8 +53,10 @@ Copy that token and paste it here."
 
 **What you say on the call:** *"This is the step that trips everyone up. After you create the System User, you have to add your app to its assets FIRST — before you generate the token. If you skip that, the token won't have permission to create ads. Watch me do this now..."*
 
-**What you type into Manus (Copy this fake token):**
-> EAAMp1fsRFhUBQZCWuMKjc2ujwsUnyqMbh2vnqsTX59U9smuUFTAQr8pmXsYwONq94WR5xIbDPZAyobHdOjgFEz7iuvFcC7kyXIlbtRNUtqC1LbuHScTk4fFZAuNFdyoWC1EZBv1ZAMTRF7pSc8MWuWoMtjIeuYBAeSU0iPGjDRcBvpkLHNodFiuQZBaot5OWNxOAZDZD
+**What you type into Manus (Copy the block below):**
+```text
+EAAMp1fsRFhUBQZCWuMKjc2ujwsUnyqMbh2vnqsTX59U9smuUFTAQr8pmXsYwONq94WR5xIbDPZAyobHdOjgFEz7iuvFcC7kyXIlbtRNUtqC1LbuHScTk4fFZAuNFdyoWC1EZBv1ZAMTRF7pSc8MWuWoMtjIeuYBAeSU0iPGjDRcBvpkLHNodFiuQZBaot5OWNxOAZDZD
+```
 
 ---
 
@@ -61,8 +65,10 @@ Copy that token and paste it here."
 
 **What you say on the call:** *"It saved the token. Now it needs to know exactly which ad account to put the ads into. I'll grab my Ad Account ID from Business Settings."*
 
-**What you type into Manus (Copy this fake ID):**
-> act_4932300966838426
+**What you type into Manus (Copy the block below):**
+```text
+act_4932300966838426
+```
 
 ---
 
@@ -71,9 +77,11 @@ Copy that token and paste it here."
 
 **What you say on the call:** *"Next, it needs my Facebook Page and Instagram IDs so the ads actually look like they're coming from my agency."*
 
-**What you type into Manus (Copy these fake IDs):**
-> Page ID: 106953661965167
-> Instagram ID: 17841452606507069
+**What you type into Manus (Copy the block below):**
+```text
+Page ID: 106953661965167
+Instagram ID: 17841452606507069
+```
 
 ---
 
@@ -82,9 +90,11 @@ Copy that token and paste it here."
 
 **What you say on the call:** *"This is the cool part. Manus doesn't create messy new campaigns — it puts the ads directly into my existing Testing and Performance campaigns. I'll give it those IDs now."*
 
-**What you type into Manus (Copy these fake IDs):**
-> Testing Campaign: 120231741510640018
-> Performance Campaign: 120231741510640019
+**What you type into Manus (Copy the block below):**
+```text
+Testing Campaign: 120231741510640018
+Performance Campaign: 120231741510640019
+```
 
 ---
 
@@ -92,9 +102,12 @@ Copy that token and paste it here."
 ### Step 7: Default Landing Page URL
 **Manus:** "Campaign IDs saved. ✅ Next, I need the default landing page URL where you want to send traffic from these ads."
 
-**You:**
-1. Copy your landing page URL (e.g., `https://theagencymentor.com.au/agency-audit-and-growth-call`).
-2. Paste it into the chat.
+**What you say on the call:** *"Now it just needs the default link where I want to send people when they click the ad. I'll give it my audit call booking page."*
+
+**What you type into Manus (Copy the block below):**
+```text
+https://theagencymentor.com.au/agency-audit-and-growth-call
+```
 
 ### Step 8: Google Cloud Project
 **Manus will say:** "Campaign IDs saved! We are done with the Meta side. Now we need to connect Google Drive so I can download your ad creatives.
@@ -115,7 +128,9 @@ Reply 'Done' when your project is created."
 **What you say on the call:** *"Okay so Meta is fully done. Now we're setting up the Google side. The reason we need this is simple — your video editor uploads files to Google Drive, and Manus needs a secure way to access that folder. Google requires you to create a 'project' first — think of it like registering your automation with Google. I've already done this, so I'll say done."*
 
 **What you type into Manus:**
-> Done
+```text
+Done
+```
 
 ---
 
@@ -141,8 +156,10 @@ Paste your Client ID here when ready."
 
 **What you say on the call:** *"This is the most detailed part of the Google setup. Three things happen here — we turn on Drive access, we configure the consent screen (which is basically telling Google what this app is called), and then we create the actual credential. The popup at the end is critical — I tell my community to copy both values into a Notes app immediately before closing it. I've already done all of this, so here's my Client ID."*
 
-**What you type into Manus (Copy this fake Client ID):**
-> 632460847530-DEMO-bvjv0jtd2kek110dtjdasajdr2lr38gi.apps.googleusercontent.com
+**What you type into Manus (Copy the block below):**
+```text
+632460847530-DEMO-bvjv0jtd2kek110dtjdasajdr2lr38gi.apps.googleusercontent.com
+```
 
 *(This is a fictitious Client ID for demo purposes only — not a real credential.)*
 
@@ -153,8 +170,10 @@ Paste your Client ID here when ready."
 
 **What you say on the call:** *"And the Client Secret — this is the second value from that popup. If anyone missed it, I remind them to click the pencil icon next to 'Manus Desktop Client' on the Credentials page to get it back."*
 
-**What you type into Manus (Copy this fake Secret):**
-> GOCSPX-DEMO-oZPq-pOizYpdet6o8zXnfgEPRV-N
+**What you type into Manus (Copy the block below):**
+```text
+GOCSPX-DEMO-oZPq-pOizYpdet6o8zXnfgEPRV-N
+```
 
 *(This is a fictitious Client Secret for demo purposes only — not a real credential.)*
 
@@ -165,8 +184,10 @@ Paste your Client ID here when ready."
 
 **What you say on the call:** *"This is the final step. Manus generates a custom one-time login link. I click it, Google asks me to confirm I want to give this app access to my Drive, and then it gives me a code. I paste that code back here and we're done."*
 
-**What you type into Manus (Copy this fake Auth Code):**
-> 4/0AeaYSHD8jX9kL_mN2pQ5vR3wT7yU1bC4xZ6vM9nK2lJ5hG8fD1sA4qW7eR0tY3uI6oP
+**What you type into Manus (Copy the block below):**
+```text
+4/0AeaYSHD8jX9kL_mN2pQ5vR3wT7yU1bC4xZ6vM9nK2lJ5hG8fD1sA4qW7eR0tY3uI6oP
+```
 
 ---
 
