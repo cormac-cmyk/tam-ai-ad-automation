@@ -19,21 +19,13 @@ This skill is an interactive, step-by-step wizard that helps TAM community membe
 
 When the user triggers this skill, start at Step 1.
 
-### Step 1: Your Top 3 Ad Captions
+### Step 1: Create a Meta Business App
 **Your Action:** 
-Say: "Welcome to the TAM AI Ad Automation setup! I'm going to help you build your own `create-meta-ads` skill. We will do this step-by-step, and I'll explain everything as we go. 
+Say: "Welcome to the TAM AI Ad Automation setup! I see you have already created your `meta-ad-scripter` skill. Now we are going to build your `create-meta-ads` skill.
 
-Before we connect your Meta account, I need to learn your unique voice. When I create ads for you, I will write the captions automatically — but I need to know what works for your business, not mine.
+First, we need to create a Meta Business App. This acts as the secure bridge between Manus and your Meta Ads account.
 
-Please find your **top 3 best-performing ad captions** from past campaigns. Copy and paste all three of them into the chat here. (You can paste them all in one message)."
-**Wait for user response.**
-*When they provide them:* Save the captions in your context as `{{USER_AD_CAPTIONS}}` and move to Step 2.
-
-### Step 2: Create a Meta Business App
-**Your Action:** 
-Say: "Captions saved! ✅ Now we need to create a Meta Business App. This acts as the secure bridge between Manus and your Meta Ads account.
-
-Please follow these exact steps (you can also refer to **Step 2** on the landing page):
+Please follow these exact steps (you can also refer to **Step 1** on the landing page):
 1. Go to [developers.facebook.com](https://developers.facebook.com) and log in.
 2. Click **My Apps** in the top right, then click **Create App**.
 3. **App details:** Give your app a name (e.g., 'TAM Ad Automation') and enter your email. Click **Next**.
@@ -45,11 +37,11 @@ Please follow these exact steps (you can also refer to **Step 2** on the landing
 Once you have created the app, you will land on the App Dashboard. You don't need to paste anything here yet — just reply **'Done'** when you have finished this step!"
 **Wait for user response.**
 *When they reply 'Done':* Move to Step 3.
-### Step 3: Create a System User & Generate Token
+### Step 2: Create a System User & Generate Token
 **Your Action:**
 Say: "Great job! ✅ Now we need to create a System User and generate your permanent access token.
 
-Please follow these steps (refer to **Step 6** on the landing page):
+Please follow these steps (refer to **Step 5** on the landing page):
 1. Go to [business.facebook.com](https://business.facebook.com) and open your Business Settings (the gear icon).
 2. Under **Users** on the left, click **System Users**.
 3. Click **Add**, name it 'Manus Automation', set the role to **Admin**, and click **Create System User**.
@@ -63,13 +55,13 @@ A long string of letters and numbers will appear. Please **copy that token and p
 **Wait for user response.**
 *When they provide the token:* Save it in your context and move to Step 3.
 
-### Step 4: Meta Ad Account ID
+### Step 3: Meta Ad Account ID
 **Your Action:**
 Say: "Token saved securely! ✅
 
 Next, I need your **Meta Ad Account ID**. This tells me exactly which ad account to put the ads into. 
 
-To find it (refer to **Step 6** on the landing page):
+To find it (refer to **Step 5** on the landing page):
 1. In Business Settings, click **Ad Accounts** on the left.
 2. Click on your ad account.
 3. Your Ad Account ID is the number shown at the top of the panel.
@@ -78,11 +70,11 @@ Please paste your Ad Account ID here (make sure to add `act_` at the front, like
 **Wait for user response.**
 *When they provide it:* Save it and move to Step 4.
 
-### Step 5: Meta Page ID & Instagram Actor ID
+### Step 4: Meta Page ID & Instagram Actor ID
 **Your Action:**
 Say: "Ad Account ID saved. ✅
 
-Now I need two IDs: your **Facebook Page ID** and your **Instagram Actor ID**. These tell Meta which social profiles should be shown as the 'sender' of the ads (refer to **Step 6** on the landing page).
+Now I need two IDs: your **Facebook Page ID** and your **Instagram Actor ID**. These tell Meta which social profiles should be shown as the 'sender' of the ads (refer to **Step 5** on the landing page).
 
 To find them:
 - **Page ID:** Go to Business Settings -> Pages, click your page, and copy the ID from the URL or panel.
@@ -92,11 +84,11 @@ Please paste both your Page ID and Instagram Actor ID here."
 **Wait for user response.**
 *When they provide them:* Save them and move to Step 5.
 
-### Step 6: Campaign IDs
+### Step 5: Campaign IDs
 **Your Action:**
 Say: "Page and IG IDs saved. ✅
 
-Next, I need the IDs for the specific campaigns where you want me to put the ads. Specifically, I need your **Testing Campaign ID** and your **Performance Campaign ID** (refer to **Step 6** on the landing page).
+Next, I need the IDs for the specific campaigns where you want me to put the ads. Specifically, I need your **Testing Campaign ID** and your **Performance Campaign ID** (refer to **Step 5** on the landing page).
 
 To find them:
 1. Go to Ads Manager.
@@ -109,7 +101,7 @@ Please paste both Campaign IDs here, labelled clearly."
 *When they provide them:* Save them and move to Step 6.
 
 
-### Step 7: Default Landing Page URL
+### Step 6: Default Landing Page URL
 **Your Action:**
 Say: "Campaign IDs saved. ✅
 
@@ -119,13 +111,13 @@ Please paste your full landing page URL here (e.g., https://yourwebsite.com/book
 **Wait for user response.**
 *When they provide it:* Save it and move to Step 7.
 
-### Step 8: Google Cloud Project & Client ID
+### Step 7: Google Cloud Project & Client ID
 **Your Action:**
 Say: "Campaign IDs saved! We are done with the Meta side. ✅
 
 Now we need to connect Google Drive so I can download your ad creatives automatically. To do this, we need to create a Google Cloud Project and get a **Client ID**.
 
-Please follow these exact steps carefully (refer to **Steps 8, 9, and 10** on the landing page):
+Please follow these exact steps carefully (refer to **Steps 7, 8, and 9** on the landing page):
 1. Go to [console.cloud.google.com](https://console.cloud.google.com) and log in.
 2. How to create a new project depends on what you see:
    - **If you see a "Select a project" screen:** Click the **Create project** button in the top right.
@@ -146,7 +138,7 @@ Please **copy your Client ID** from that popup and paste it here (it usually end
 **Wait for user response.**
 *When they provide it:* Save it and move to Step 7.
 
-### Step 9: Google Client Secret
+### Step 8: Google Client Secret
 **Your Action:**
 Say: "Client ID saved. ✅
 
@@ -156,20 +148,20 @@ Now, please copy your **Google Client Secret** from that exact same popup and pa
 **Wait for user response.**
 *When they provide it:* Save it and move to Step 8.
 
-### Step 10: Google OAuth Flow (Refresh Token)
+### Step 9: Google OAuth Flow (Refresh Token)
 **Your Action:**
 Say: "Client Secret saved. ✅
 
 We are at the final step! Now we need to authorise Manus to read your Google Drive. I am going to generate a special link for you. 
 
-Please click the link below, sign in with the Google account that holds your ad creatives, click 'Allow', and then paste the **authorisation code** it gives you back here in the chat (refer to **Step 11** on the landing page).
+Please click the link below, sign in with the Google account that holds your ad creatives, click 'Allow', and then paste the **authorisation code** it gives you back here in the chat (refer to **Step 10** on the landing page).
 
 Here is your link:
 `https://accounts.google.com/o/oauth2/auth?client_id=[INSERT_THEIR_CLIENT_ID_HERE]&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.readonly&access_type=offline&prompt=consent`"
 **Wait for user response.**
 *When they provide the code:* Use Python in the background to exchange that code for a `refresh_token` using their Client ID and Client Secret. Do not show them the code, just do it. Then move to Step 9.
 
-### Step 11: Build the Skills
+### Step 10: Build the Skill
 **Your Action:**
 Say: "Google Drive is connected! ✅🎉
 
@@ -177,64 +169,7 @@ You have provided all the necessary credentials. I am now going to build your pe
 
 **CRITICAL INSTRUCTION FOR MANUS:** You MUST create the following 4 files exactly as shown below, replacing the `{{PLACEHOLDERS}}` with the credentials the user provided. Do not skip any files.
 
-#### File 1: `/home/ubuntu/skills/meta-ad-scripter/SKILL.md`
-```markdown
----
-name: meta-ad-scripter
-description: Generates high-converting Meta Ad captions and scripts based on your top-performing examples. Use this skill when the user asks to create ad copy, write captions for Meta ads, or script new ads for performance, testing, or workshop campaigns.
----
-
-# Meta Ad Scripter
-
-This skill provides the workflow and reference material for generating high-converting Meta Ad captions and scripts tailored for The Agency Mentor (TAM) audience (Aussie & NZ Agency Owners).
-
-## Workflow
-
-When asked to create ad copy or captions, follow these steps:
-
-1.  **Understand the Request:**
-    *   Determine the type of campaign: Is it a Performance/Testing campaign or a Workshop campaign?
-    *   Identify the core message or angle the user wants to convey (if provided).
-    *   If the user provides a landing page or video creative, extract the key value propositions to include in the copy.
-
-2.  **Load Reference Material:**
-    *   Read the reference file containing top-performing examples and tone guidelines:
-        `/home/ubuntu/skills/meta-ad-scripter/references/ad_script_examples.md`
-
-3.  **Draft the Ad Copy:**
-    *   Generate 2-3 variations of the ad copy based on the requested angle and the tone guidelines found in the reference file.
-    *   Ensure the copy strictly follows the formatting rules (short paragraphs, specific emojis, bulleted lists with ✅).
-    *   Include a strong headline for each variation (a well-written summation of the ad copy).
-
-4.  **Present the Options:**
-    *   Present the drafted ad copy variations to the user for review.
-    *   Ask if they would like any adjustments to the tone, length, or specific elements.
-
-## Key Principles
-
-*   **Audience:** Aussie & NZ Agency Owners.
-*   **Tone:** Direct, problem-focused, authoritative, yet conversational.
-*   **Structure:** Hook -> Problem Agitation -> The "Mentor" Statement -> The "Method" (CARS) -> 3 Foundations (Bulleted) -> Call to Action.
-*   **Headlines:** Always provide a headline alongside the primary text.
-
-## Resources
-
-### references/
-- `ad_script_examples.md`: Contains top-performing ad script examples and detailed tone/style guidelines. Always read this file before generating new ad copy.
-
-```
-
-#### File 2: `/home/ubuntu/skills/meta-ad-scripter/references/ad_script_examples.md`
-```markdown
-# Reference Ad Scripts
-
-These are the user's top-performing ad captions. Use these as the absolute source of truth for tone, structure, formatting, and call-to-action style when generating new ad copy.
-
-{{USER_AD_CAPTIONS}}
-
-```
-
-#### File 3: `/home/ubuntu/skills/create-meta-ads/SKILL.md`
+#### File 1: `/home/ubuntu/skills/create-meta-ads/SKILL.md`
 ```markdown
 ---
 name: create-meta-ads
@@ -306,7 +241,7 @@ If they say yes, use the `meta-marketing` MCP or Graph API to update their statu
 
 ```
 
-#### File 4: `/home/ubuntu/skills/create-meta-ads/scripts/create_ads.py`
+#### File 2: `/home/ubuntu/skills/create-meta-ads/scripts/create_ads.py`
 ```python
 import os
 import sys
