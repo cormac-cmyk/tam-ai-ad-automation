@@ -33,6 +33,7 @@ Please follow these exact steps (you can also refer to **Step 1** on the landing
 5. **Business:** Select your Business Portfolio (e.g., your agency name). Click **Next**.
 6. **Requirements:** It should say "No requirements identified". Click **Next**.
 7. **Overview:** Review the summary and click **Create app**.
+*(Note: If Meta does not allow you to create an app, it may be because your Business Manager account is not verified. To fix this, go to Business Settings -> Security Centre, and click 'Start Verification' under Business Verification).*
 
 Once you have created the app, you will land on the App Dashboard. You don't need to paste anything here yet — just reply **'Done'** when you have finished this step!"
 **Wait for user response.**
@@ -45,6 +46,7 @@ Please follow these steps (refer to **Step 5** on the landing page):
 1. Go to [business.facebook.com](https://business.facebook.com) and open your Business Settings (the gear icon).
 2. Under **Users** on the left, click **System Users**.
 3. Click **Add**, name it 'Manus Automation', set the role to **Admin**, and click **Create System User**.
+*(Note: Sometimes Meta rejects the name 'Manus Automation'. If it gives you an error, try a different name like 'TAM API User' or 'AI Ad Bot').*
 4. Click **Add Assets**, select **Apps**, find the app you just created ('TAM Ad Automation'), tick **Full control**, and click **Save changes**. ⚠️ This is the step most people miss — without this, your token will not have permission to create ads.
 5. Click **Add Assets** again, this time select **Ad Accounts**, find your ad account, tick **Manage campaigns**, and click **Save changes**.
 6. Now click **Generate New Token**. Select the app you just created ('TAM Ad Automation') from the dropdown.

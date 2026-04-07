@@ -78,10 +78,12 @@ Click the link below to grab your seat!
 ### Step 1: Create a Meta Business App
 **Manus:** "Welcome to the TAM AI Ad Automation setup! I see you have already created your `meta-ad-scripter` skill. Now we are going to build your `create-meta-ads` skill. First, we need to create a Meta Business App..."
 
+**What you say on the call:** *"First, we create a Meta Business App. This is the secure bridge between Manus and your ad account. If Meta blocks you from creating one, it usually means your Business Manager isn't verified yet — you can fix that in Business Settings under Security Centre."*
+
 ### Step 2: System User Token
 **Manus:** "Great job! ✅ Now we need to create a System User and generate your permanent access token. Please follow these steps..."
 
-**What you say on the call:** *"This is the step that trips everyone up. After you create the System User, you have to add your app to its assets FIRST — before you generate the token. If you skip that, the token won't have permission to create ads. Watch me do this now..."*
+**What you say on the call:** *"This is the step that trips everyone up. First, if Meta rejects the name 'Manus Automation', just try a different name like 'TAM API User'. Second, after you create the System User, you have to add your app to its assets FIRST — before you generate the token. If you skip that, the token won't have permission to create ads. Watch me do this now..."*
 
 **What you type into Manus (Copy the block below):**
 ```text
