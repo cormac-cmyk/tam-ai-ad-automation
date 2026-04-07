@@ -6,6 +6,9 @@
 > **Your Setup Call Starts Soon.**
 > This isn't a passive webinar — it's a live build session. Every member who comes prepared walks away with a working automation. Every member who doesn't, watches. Complete this checklist before the call.
 
+
+> **Can't figure something out right now? That's totally fine.** Do what you can before the call. The more you have ready, the more you'll get out of the session — but we'll help you work through anything you're stuck on together.
+
 ---
 
 ## What We Are Building Together
@@ -70,8 +73,6 @@ These skills use background Python execution and persistent skill files — feat
 
 - [ ] **Manus Account — Pro Plan or Above**
   Log into `manus.im` and confirm your subscription is Pro or higher. Free accounts cannot run skill files or background Python scripts. If you need to upgrade, do it before the call — setup will not work on a free account.
-- [ ] **Both Wizard Files — Downloaded**
-  Download both wizard files from the setup page: `TAMCommunity-MetaAdCaptionSkillWizard.md` and `TAMCommunity-AIAdAutomationSetupWizard.md`. Save them somewhere easy to find — you will be uploading them to Manus during the call.
 
 ---
 
