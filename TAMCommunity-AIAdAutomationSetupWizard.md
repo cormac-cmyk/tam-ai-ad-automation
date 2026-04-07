@@ -38,11 +38,22 @@ Once you have created the app, you will land on the App Dashboard. You don't nee
 **Wait for user response.**
 *When they reply 'Done':* Move to Step 2.
 
-### Step 2: Create a System User & Generate Token
+
+### Step 2: Your Top 3 Ad Captions
+**Your Action:**
+Say: "App created! ✅
+
+Before we connect your Meta account, I need to learn your unique voice. When I create ads for you, I will write the captions automatically — but I need to know what works for your business, not mine.
+
+Please find your **top 3 best-performing ad captions** from past campaigns. Copy and paste all three of them into the chat here. (You can paste them all in one message)."
+**Wait for user response.**
+*When they provide them:* Save the captions in your context as `{{USER_AD_CAPTIONS}}` and move to Step 3.
+
+### Step 3: Create a System User & Generate Token
 **Your Action:**
 Say: "Great job! ✅ Now we need to create a System User and generate your permanent access token.
 
-Please follow these steps (refer to **Step 2** on the landing page):
+Please follow these steps (refer to **Step 6** on the landing page):
 1. Go to [business.facebook.com](https://business.facebook.com) and open your Business Settings (the gear icon).
 2. Under **Users** on the left, click **System Users**.
 3. Click **Add**, name it 'Manus Automation', set the role to **Admin**, and click **Create System User**.
@@ -56,13 +67,13 @@ A long string of letters and numbers will appear. Please **copy that token and p
 **Wait for user response.**
 *When they provide the token:* Save it in your context and move to Step 3.
 
-### Step 3: Meta Ad Account ID
+### Step 4: Meta Ad Account ID
 **Your Action:**
 Say: "Token saved securely! ✅
 
 Next, I need your **Meta Ad Account ID**. This tells me exactly which ad account to put the ads into. 
 
-To find it (refer to **Step 3** on the landing page):
+To find it (refer to **Step 6** on the landing page):
 1. In Business Settings, click **Ad Accounts** on the left.
 2. Click on your ad account.
 3. Your Ad Account ID is the number shown at the top of the panel.
@@ -71,11 +82,11 @@ Please paste your Ad Account ID here (make sure to add `act_` at the front, like
 **Wait for user response.**
 *When they provide it:* Save it and move to Step 4.
 
-### Step 4: Meta Page ID & Instagram Actor ID
+### Step 5: Meta Page ID & Instagram Actor ID
 **Your Action:**
 Say: "Ad Account ID saved. ✅
 
-Now I need two IDs: your **Facebook Page ID** and your **Instagram Actor ID**. These tell Meta which social profiles should be shown as the 'sender' of the ads (refer to **Step 4** on the landing page).
+Now I need two IDs: your **Facebook Page ID** and your **Instagram Actor ID**. These tell Meta which social profiles should be shown as the 'sender' of the ads (refer to **Step 6** on the landing page).
 
 To find them:
 - **Page ID:** Go to Business Settings -> Pages, click your page, and copy the ID from the URL or panel.
@@ -85,11 +96,11 @@ Please paste both your Page ID and Instagram Actor ID here."
 **Wait for user response.**
 *When they provide them:* Save them and move to Step 5.
 
-### Step 5: Campaign IDs
+### Step 6: Campaign IDs
 **Your Action:**
 Say: "Page and IG IDs saved. ✅
 
-Next, I need the IDs for the specific campaigns where you want me to put the ads. Specifically, I need your **Testing Campaign ID** and your **Performance Campaign ID** (refer to **Step 5** on the landing page).
+Next, I need the IDs for the specific campaigns where you want me to put the ads. Specifically, I need your **Testing Campaign ID** and your **Performance Campaign ID** (refer to **Step 6** on the landing page).
 
 To find them:
 1. Go to Ads Manager.
@@ -102,7 +113,7 @@ Please paste both Campaign IDs here, labelled clearly."
 *When they provide them:* Save them and move to Step 6.
 
 
-### Step 6: Default Landing Page URL
+### Step 7: Default Landing Page URL
 **Your Action:**
 Say: "Campaign IDs saved. ✅
 
@@ -112,13 +123,13 @@ Please paste your full landing page URL here (e.g., https://yourwebsite.com/book
 **Wait for user response.**
 *When they provide it:* Save it and move to Step 7.
 
-### Step 7: Google Cloud Project & Client ID
+### Step 8: Google Cloud Project & Client ID
 **Your Action:**
 Say: "Campaign IDs saved! We are done with the Meta side. ✅
 
 Now we need to connect Google Drive so I can download your ad creatives automatically. To do this, we need to create a Google Cloud Project and get a **Client ID**.
 
-Please follow these exact steps carefully (refer to **Steps 6, 7, and 8** on the landing page):
+Please follow these exact steps carefully (refer to **Steps 8, 9, and 10** on the landing page):
 1. Go to [console.cloud.google.com](https://console.cloud.google.com) and log in.
 2. How to create a new project depends on what you see:
    - **If you see a "Select a project" screen:** Click the **Create project** button in the top right.
@@ -139,7 +150,7 @@ Please **copy your Client ID** from that popup and paste it here (it usually end
 **Wait for user response.**
 *When they provide it:* Save it and move to Step 7.
 
-### Step 8: Google Client Secret
+### Step 9: Google Client Secret
 **Your Action:**
 Say: "Client ID saved. ✅
 
@@ -149,20 +160,20 @@ Now, please copy your **Google Client Secret** from that exact same popup and pa
 **Wait for user response.**
 *When they provide it:* Save it and move to Step 8.
 
-### Step 9: Google OAuth Flow (Refresh Token)
+### Step 10: Google OAuth Flow (Refresh Token)
 **Your Action:**
 Say: "Client Secret saved. ✅
 
 We are at the final step! Now we need to authorise Manus to read your Google Drive. I am going to generate a special link for you. 
 
-Please click the link below, sign in with the Google account that holds your ad creatives, click 'Allow', and then paste the **authorisation code** it gives you back here in the chat (refer to **Step 9** on the landing page).
+Please click the link below, sign in with the Google account that holds your ad creatives, click 'Allow', and then paste the **authorisation code** it gives you back here in the chat (refer to **Step 11** on the landing page).
 
 Here is your link:
 `https://accounts.google.com/o/oauth2/auth?client_id=[INSERT_THEIR_CLIENT_ID_HERE]&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.readonly&access_type=offline&prompt=consent`"
 **Wait for user response.**
 *When they provide the code:* Use Python in the background to exchange that code for a `refresh_token` using their Client ID and Client Secret. Do not show them the code, just do it. Then move to Step 9.
 
-### Step 10: Build the Skills
+### Step 11: Build the Skills
 **Your Action:**
 Say: "Google Drive is connected! ✅🎉
 
@@ -174,7 +185,7 @@ You have provided all the necessary credentials. I am now going to build your pe
 ```markdown
 ---
 name: meta-ad-scripter
-description: Generates high-converting Meta Ad captions and scripts based on top-performing examples for The Agency Mentor (TAM). Use this skill when the user asks to create ad copy, write captions for Meta ads, or script new ads for performance, testing, or workshop campaigns.
+description: Generates high-converting Meta Ad captions and scripts based on your top-performing examples. Use this skill when the user asks to create ad copy, write captions for Meta ads, or script new ads for performance, testing, or workshop campaigns.
 ---
 
 # Meta Ad Scripter
@@ -219,140 +230,11 @@ When asked to create ad copy or captions, follow these steps:
 
 #### File 2: `/home/ubuntu/skills/meta-ad-scripter/references/ad_script_examples.md`
 ```markdown
-# Meta Ad Script Examples & Tone Guidelines
+# Reference Ad Scripts
 
-This document contains top-performing ad script examples to be used as reference for generating new Meta ad captions.
+These are the user's top-performing ad captions. Use these as the absolute source of truth for tone, structure, formatting, and call-to-action style when generating new ad copy.
 
-## Tone & Style Guidelines
-
-When generating new ad captions, strictly adhere to the following style rules observed in these top-performing examples:
-
-1.  **Direct & Problem-Focused Hook:** Start with a strong hook that calls out the target audience (Agency Owners) and their specific pain points (e.g., stuck at a revenue ceiling, doing all the work themselves, inconsistent sales).
-2.  **Emoji Usage:** Use emojis sparingly but strategically. A rocket emoji (🚀) is often used at the end of the hook. Green checkmarks (✅) are used for bulleted lists. A collision/boom emoji (💥) is used for workshop dates.
-3.  **The "Mentor" Statement:** Include a variation of the core positioning statement: "We mentor Aussie & NZ Agency Owners every week using our proven method of scaling agencies legitimately."
-4.  **The "Method" Introduction:** Introduce the solution by name, typically: "This method is called: 'CARS'" (Client Acquisition & Retention System).
-5.  **Bulleted Value Props (The 3 Foundations):** Use a 3-point bulleted list with green checkmarks (✅) to explain the system. The core three are usually:
-    *   ✅ Paid Media Funnel
-    *   ✅ 2 Call Sales Process
-    *   ✅ Streamlined Operation
-    *(Note: These can be expanded with brief explanations as seen in Script #4 and #5).*
-6.  **Clear Call to Action (CTA):** End with a direct, low-friction CTA. Example: "If any of what you've just heard sounds like something that might help you... Hit 'Learn More' below & we'll explain how we help Agency Owners grow."
-7.  **Formatting:** Use short paragraphs (1-3 sentences) to make the text highly readable on mobile devices.
-
----
-
-## Performance & Testing Campaign Ad Script Examples
-
-### Ad Script #1 (Short & Direct)
-We help Agency Owners create a 7-Figure Lifestyle Agency! 🚀
-
-We mentor Aussie & NZ Agency Owners every week using our proven methods of scaling agencies legitimately.
-
-Our method to grow agencies is called a "Client Acquisition & Retention System" which broken down is:
-
-✅ Paid Media Funnel
-✅ 2 Call Sales Process
-✅ Streamlined Operation
-
-If any of what you've just heard sounds like something that might help you... Hit 'Learn More' below & we'll explain how we help Agency Owners grow.
-
-### Ad Script #2 (Question Hook)
-Looking to grow your agency? Ready to reach the 7+ figure a year mark? 🚀
-
-We mentor Aussie & NZ Agency Owners every week using our proven method of scaling agencies legitimately.
-
-This method is called: "CARS"
-
-CARS is made up of 3 key foundations to building a 7 figure agency. These are:
-✅ Paid Media Funnel
-✅ 2 Call Sales Process
-✅ Streamlined Operation
-
-If any of what you've just heard sounds like something that might help you... Hit 'Learn More' below & we'll explain how we help Agency Owners grow.
-
-### Ad Script #3 (Pain-Point Story Hook)
-Are you running a marketing agency — social media, Google Ads, SEO, email, web design, AI, creative, or performance — and you're stuck? You're delivering results for clients every single day, but your own business feels like it's going backwards. 🚀
-
-You've got a team (or you're trying to build one), but you're still the one doing the work. You're still in every client call, every delivery, every problem. You can't step away because if you do, things fall apart.
-
-Your sales process is inconsistent — some months are great, others are terrifying. You don't have a predictable way to bring in new clients. You're relying on referrals, word of mouth, or just hoping someone reaches out. And when you do get a lead, you're not sure how to close them without discounting or over-promising.
-
-Your offers aren't landing the way they should. You know what you do is valuable, but you struggle to articulate it in a way that makes people say yes immediately. You're not seen as the authority in your market — not yet.
-
-We mentor Aussie & NZ Agency Owners every week using our proven method of scaling agencies legitimately.
-
-This method is called: "CARS"
-
-CARS is the exact system we use to help agency owners go from stuck and overwhelmed to running a business that generates consistent leads, closes clients at premium prices, and delivers results without the owner being involved in every single step.
-
-It's built around 3 foundations:
-✅ Paid Media Funnel — a predictable, scalable way to generate leads using Meta Ads so you're never relying on referrals again
-✅ 2 Call Sales Process — a proven system to convert leads into high-value clients without chasing, discounting, or wasting hours on tyre-kickers
-✅ Streamlined Operation — the systems, team structure, and processes to remove yourself from delivery so your agency can grow without you
-
-If any of what you've just heard sounds like something that might help you... Hit 'Learn More' below & we'll explain how we help Agency Owners grow.
-
-### Ad Script #4 (Revenue Specific Hook)
-If you own a marketing agency — whether that's social media management, paid ads, SEO, email, web, creative, AI, or performance — and you're doing $5k to $84k a month but feel like you're working harder than ever with not much to show for it... this is for you. 🚀
-
-Here's what we see all the time: agency owners who are genuinely talented at what they do, but they've accidentally built a job for themselves instead of a business. They're the best salesperson, the best account manager, and the best delivery person all in one — and they're burning out.
-
-They want to build a real team, but they don't know how to hire, train, or trust people to do the work properly. They want a sales process that doesn't depend on their personality or their network. They want to run Meta Ads to generate leads, but they don't know how to make it work without blowing the budget. They want to be seen as the go-to authority in their niche — but they haven't found the right message, the right market, or the right offer yet.
-Sound familiar?
-
-We mentor Aussie & NZ Agency Owners every week using our proven method of scaling agencies legitimately.
-
-This method is called: "CARS"
-
-CARS stands for Client Acquisition & Retention System — and it's the framework we've used to help agency owners across Australia and New Zealand go from inconsistent revenue and constant stress to building businesses that run without them.
-
-Here's what it covers:
-✅ Paid Media Funnel — we help you build and run a Meta Ads funnel that generates qualified leads on demand, so you always have a full pipeline and you're never desperate for the next client
-✅ 2 Call Sales Process — a repeatable, structured sales system that lets you (or your team) close premium clients consistently, without discounting or spending hours on calls that go nowhere
-✅ Streamlined Operation — the systems and team structure to remove yourself from day-to-day delivery, so your agency can scale beyond what you can personally handle
-
-If any of what you've just heard sounds like something that might help you... Hit 'Learn More' below & we'll explain how we help Agency Owners grow.
-
----
-
-## Workshop Campaign Ad Script Examples
-
-*Note: Workshop ads follow a slightly different structure focused on an event date, specific learnings, and bonus content.*
-
-### Workshop Script #1
-LIVE Workshop – “Team Building!” – March 18th, 9am AEST! 💥
-
-Join me on our LIVE workshop to learn how to:
-✅ Build Out Pod Structures
-✅ Build Your 6 Month Organisational Chart
-✅ Set Clear Profit Margin Targets
-✅ Measure Utilisation & Capacity Rates
-
-BONUS Content:
-🎉 Worksheets to map out organisation chart
-🎉 Utilisation Rate Tracking Spreadsheet
-🎉 48-hour access to the live workshop recording
-
-First 50 tickets are only $100! After that, they’re $150.
-
-Click the link below to grab your seat!
-
-### Workshop Script #2
-LIVE Workshop – “LEADS w/META ADS!” – February 18th! 💥
-
-Join me on our LIVE workshop to learn how to:
-✅ Script & shoot compelling ad creatives that get leads
-✅ Launch a simple Meta campaign, set clear KPI's &
-✅ Build landing pages that turn leads into booked calls
-
-BONUS Content:
-🎉 Worksheets to map out ads & funnel structure
-🎉 Claude AI Writing Tools
-🎉 48-hour access to the live workshop recording
-
-First 50 tickets are only $100! After that, they’re $150.
-
-Click the link below to grab your seat!
+{{USER_AD_CAPTIONS}}
 
 ```
 

@@ -77,7 +77,7 @@ Copy that token and paste it here."
 
 ---
 
-### Step 5: Campaign IDs
+### Step 6: Campaign IDs
 **Manus will say:** "Page and IG IDs saved. Next, I need the IDs for the specific campaigns where you want me to put the ads. Specifically, I need your Testing Campaign ID and your Performance Campaign ID..."
 
 **What you say on the call:** *"This is the cool part. Manus doesn't create messy new campaigns — it puts the ads directly into my existing Testing and Performance campaigns. I'll give it those IDs now."*
@@ -89,19 +89,19 @@ Copy that token and paste it here."
 ---
 
 
-### Step 6: Default Landing Page URL
+### Step 7: Default Landing Page URL
 **Manus:** "Campaign IDs saved. ✅ Next, I need the default landing page URL where you want to send traffic from these ads."
 
 **You:**
 1. Copy your landing page URL (e.g., `https://theagencymentor.com.au/agency-audit-and-growth-call`).
 2. Paste it into the chat.
 
-### Step 7: Google Cloud Project
+### Step 8: Google Cloud Project
 **Manus will say:** "Campaign IDs saved! We are done with the Meta side. Now we need to connect Google Drive so I can download your ad creatives.
 
 This is why we need Google: your video editor saves files to a Google Drive folder. Instead of you manually downloading and uploading each file to Meta, Manus does it automatically. To make that work, we need to give Manus a secure key to access your Drive.
 
-Let's start by creating a Google Cloud Project (refer to Step 7 on the landing page):
+Let's start by creating a Google Cloud Project (refer to Step 8 on the landing page):
 1. Go to console.cloud.google.com and log in with the Google account that owns your Drive.
 2. How to create a new project depends on what you see:
    - If you see a "Select a project" screen: Click the 'Create project' button in the top right.
@@ -122,7 +122,7 @@ Reply 'Done' when your project is created."
 ### Step 7: Enable Drive API, OAuth Consent Screen & Create Client ID
 **Manus will say:** "Project created! Now we need to do three things inside Google Cloud:
 
-**Part A — Enable the Drive API** (refer to Step 7 on the landing page):
+**Part A — Enable the Drive API** (refer to Step 8 on the landing page):
 1. On your project's Welcome dashboard, click the 'APIs and services' tile.
 2. Click '+ ENABLE APIS AND SERVICES' at the top.
 3. Search for 'Google Drive API', click it, then click Enable.
@@ -148,7 +148,7 @@ Paste your Client ID here when ready."
 
 ---
 
-### Step 8: Google Client Secret & OAuth Flow
+### Step 9: Google Client Secret & OAuth Flow
 **Manus will say:** "Client ID saved. Now paste your Google Client Secret (this is the second value from that popup)."
 
 **What you say on the call:** *"And the Client Secret — this is the second value from that popup. If anyone missed it, I remind them to click the pencil icon next to 'Manus Desktop Client' on the Credentials page to get it back."*
