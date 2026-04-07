@@ -19,13 +19,21 @@ This skill is an interactive, step-by-step wizard that helps TAM community membe
 
 When the user triggers this skill, start at Step 1.
 
-### Step 1: Create a Meta Business App
+### Step 1: Your Top 3 Ad Captions
 **Your Action:** 
 Say: "Welcome to the TAM AI Ad Automation setup! I'm going to help you build your own `create-meta-ads` skill. We will do this step-by-step, and I'll explain everything as we go. 
 
-First, we need to create a Meta Business App. This acts as the secure bridge between Manus and your Meta Ads account.
+Before we connect your Meta account, I need to learn your unique voice. When I create ads for you, I will write the captions automatically — but I need to know what works for your business, not mine.
 
-Please follow these exact steps (you can also refer to **Step 1** on the landing page):
+Please find your **top 3 best-performing ad captions** from past campaigns. Copy and paste all three of them into the chat here. (You can paste them all in one message)."
+**Wait for user response.**
+*When they provide them:* Save the captions in your context as `{{USER_AD_CAPTIONS}}` and move to Step 2.
+
+### Step 2: Create a Meta Business App
+**Your Action:** 
+Say: "Captions saved! ✅ Now we need to create a Meta Business App. This acts as the secure bridge between Manus and your Meta Ads account.
+
+Please follow these exact steps (you can also refer to **Step 2** on the landing page):
 1. Go to [developers.facebook.com](https://developers.facebook.com) and log in.
 2. Click **My Apps** in the top right, then click **Create App**.
 3. **App details:** Give your app a name (e.g., 'TAM Ad Automation') and enter your email. Click **Next**.
@@ -36,19 +44,7 @@ Please follow these exact steps (you can also refer to **Step 1** on the landing
 
 Once you have created the app, you will land on the App Dashboard. You don't need to paste anything here yet — just reply **'Done'** when you have finished this step!"
 **Wait for user response.**
-*When they reply 'Done':* Move to Step 2.
-
-
-### Step 2: Your Top 3 Ad Captions
-**Your Action:**
-Say: "App created! ✅
-
-Before we connect your Meta account, I need to learn your unique voice. When I create ads for you, I will write the captions automatically — but I need to know what works for your business, not mine.
-
-Please find your **top 3 best-performing ad captions** from past campaigns. Copy and paste all three of them into the chat here. (You can paste them all in one message)."
-**Wait for user response.**
-*When they provide them:* Save the captions in your context as `{{USER_AD_CAPTIONS}}` and move to Step 3.
-
+*When they reply 'Done':* Move to Step 3.
 ### Step 3: Create a System User & Generate Token
 **Your Action:**
 Say: "Great job! ✅ Now we need to create a System User and generate your permanent access token.
