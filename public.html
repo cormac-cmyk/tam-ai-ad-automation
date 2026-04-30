@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meta Ads Automation with Manus AI | TAM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --midnight: #000a33;
+      --lapis: #051ade;
+      --mint: #00ffbf;
+      --offwhite: #f7f7f5;
+      --white: #ffffff;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --warning-bg: #fff3cd;
+      --warning-border: #f59e0b;
+      --warning-text: #92400e;
+      --danger-bg: #fef2f2;
+      --danger-border: #ef4444;
+      --danger-text: #991b1b;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--offwhite);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--midnight);
+      color: var(--white);
+      padding: 64px 24px 56px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-family: 'Archivo', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Archivo', sans-serif;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--mint); }
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.75);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(239,68,68,0.15);
+      border: 1.5px solid #ef4444;
+      color: #fca5a5;
+      font-family: 'Archivo', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 4px;
+    }
+
+    /* ── MAIN DISCLAIMER BANNER ── */
+    .disclaimer-banner {
+      background: var(--danger-bg);
+      border-left: 5px solid var(--danger-border);
+      padding: 24px 28px;
+      margin: 0;
+    }
+    .disclaimer-banner h2 {
+      font-family: 'Archivo', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--danger-text);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .disclaimer-banner p {
+      font-size: 14px;
+      color: var(--danger-text);
+      line-height: 1.7;
+    }
+    .disclaimer-banner p + p { margin-top: 8px; }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      padding: 56px 0 0;
+    }
+    .section:last-of-type { padding-bottom: 80px; }
+
+    .section-label {
+      font-family: 'Archivo', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lapis);
+      margin-bottom: 8px;
+    }
+    .section h2 {
+      font-family: 'Archivo', sans-serif;
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 800;
+      color: var(--midnight);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .section p {
+      font-size: 15px;
+      color: #374151;
+      margin-bottom: 16px;
+    }
+
+    /* ── INLINE WARNING ── */
+    .inline-warning {
+      background: var(--warning-bg);
+      border-left: 4px solid var(--warning-border);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: var(--warning-text);
+      line-height: 1.6;
+    }
+    .inline-warning strong { display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .inline-danger {
+      background: var(--danger-bg);
+      border-left: 4px solid var(--danger-border);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: var(--danger-text);
+      line-height: 1.6;
+    }
+    .inline-danger strong { display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ── MANUS TIP ── */
+    .manus-tip {
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .manus-tip-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .manus-tip-body { font-size: 14px; color: #166534; line-height: 1.65; }
+    .manus-tip-body strong { display: block; font-family: 'Archivo', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+
+    /* ── APP CARDS ── */
+    .app-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    @media (max-width: 560px) { .app-grid { grid-template-columns: 1fr; } }
+    .app-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .app-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+    .app-card h3 {
+      font-family: 'Archivo', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--midnight);
+      margin-bottom: 6px;
+    }
+    .app-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+    .app-card a {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--lapis);
+      text-decoration: none;
+    }
+    .app-card a:hover { text-decoration: underline; }
+
+    /* ── STEPS ── */
+    .steps { margin: 24px 0; }
+    .step {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--midnight);
+      color: var(--mint);
+      font-family: 'Archivo', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .step-body h3 {
+      font-family: 'Archivo', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--midnight);
+      margin-bottom: 6px;
+    }
+    .step-body p {
+      font-size: 14px;
+      color: #374151;
+      margin: 0;
+      line-height: 1.65;
+    }
+    .step-body .tag {
+      display: inline-block;
+      background: #eff6ff;
+      color: var(--lapis);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1.5px solid var(--border);
+      margin: 48px 0 0;
+    }
+
+    /* ── FOOTER DISCLAIMER ── */
+    .footer-disclaimer {
+      background: var(--midnight);
+      color: rgba(255,255,255,0.6);
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .footer-disclaimer strong { color: rgba(255,255,255,0.9); }
+    .footer-disclaimer p + p { margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">The Agency Mentor — Community Resource</div>
+    <h1>Automate Your Meta Ads<br>with <span>Manus AI</span></h1>
+    <p class="hero-sub">A high-level overview of how to set up the Meta Ads automation workflow — the apps you need, the steps to follow, and what to watch out for.</p>
+    <span class="hero-badge">⚠ Read All Disclaimers Before Proceeding</span>
+  </div>
+
+  <!-- MAIN DISCLAIMER BANNER -->
+  <div class="disclaimer-banner">
+    <div class="container">
+      <h2>⚠ Important Disclaimer — Read Before You Begin</h2>
+      <p><strong>This guide is provided for educational and informational purposes only.</strong> The Agency Mentor (TAM) and Cormac Gray are not responsible for any outcomes that result from following this guide, including but not limited to ad account restrictions, ad account bans, loss of advertising access, financial loss, or any other consequences arising from the use of this automation.</p>
+      <p>Using the Meta Marketing API to automate ad creation carries <strong>real and significant risk</strong>. Meta's policies change frequently and without notice. What works today may violate policy tomorrow. You are solely responsible for ensuring your use of this automation complies with Meta's Terms of Service, Advertising Policies, and Developer Platform Terms at all times.</p>
+      <p><strong>By proceeding, you acknowledge that you have read and understood this disclaimer and that you accept full responsibility for your own results.</strong></p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- WHAT THIS IS -->
+    <div class="section">
+      <div class="section-label">Overview</div>
+      <h2>What This Automation Does</h2>
+      <p>This workflow uses <strong>Manus AI</strong> to automate the process of creating Meta ads. You give Manus a Google Drive folder containing your creative assets (videos or images), and it handles the rest — downloading the files, uploading them to Meta, generating ad copy, and creating the ads in your chosen campaign. All ads are created in a <strong>PAUSED</strong> state so you can review them before anything goes live.</p>
+      <p>This is not a plug-and-play tool. It requires a one-time technical setup involving two third-party platforms: the <strong>Meta Developer Portal</strong> and the <strong>Google Cloud Console</strong>. Both are free to use. The setup takes most people between 1–3 hours on their first attempt.</p>
+
+      <div class="inline-danger">
+        <strong>⚠ Real Risk — Ad Account Bans</strong>
+        Using the Meta Marketing API without a properly configured Developer App is one of the most common reasons ad accounts get restricted or banned. Do not skip the setup steps. Do not share your System User token with anyone. TAM is not liable for any account restrictions that occur as a result of using this automation.
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- APPS YOU NEED -->
+    <div class="section">
+      <div class="section-label">What You Need</div>
+      <h2>The Four Platforms You Will Use</h2>
+      <p>Before you begin, make sure you have accounts on all four of the following platforms. Three of them require setup steps — the fourth (Google Drive) you likely already use.</p>
+
+      <div class="app-grid">
+        <div class="app-card">
+          <div class="app-card-icon" style="background:#e8f0fe;">🔵</div>
+          <h3>Meta Developer Portal</h3>
+          <p>Where you create your Developer App and generate your System User token — the key that gives Manus permission to create ads on your behalf.</p>
+          <a href="https://developers.facebook.com" target="_blank" rel="noopener">developers.facebook.com →</a>
+        </div>
+        <div class="app-card">
+          <div class="app-card-icon" style="background:#fce8e6;">🔴</div>
+          <h3>Google Cloud Console</h3>
+          <p>Where you enable the Google Drive API and create OAuth credentials so Manus can access your Drive folder to download your creative assets.</p>
+          <a href="https://console.cloud.google.com" target="_blank" rel="noopener">console.cloud.google.com →</a>
+        </div>
+        <div class="app-card">
+          <div class="app-card-icon" style="background:#e6f4ea;">🟢</div>
+          <h3>Google Drive</h3>
+          <p>Where you store your creative assets (videos and images). You will share a folder link with Manus each time you want to create a new batch of ads.</p>
+          <a href="https://drive.google.com" target="_blank" rel="noopener">drive.google.com →</a>
+        </div>
+        <div class="app-card">
+          <div class="app-card-icon" style="background:#fff3e0;">🟠</div>
+          <h3>Manus AI</h3>
+          <p>The AI agent that runs the automation. You upload a skill file to your Manus account, then trigger it by pasting a Drive link and choosing your campaign.</p>
+          <a href="https://manus.im" target="_blank" rel="noopener">manus.im →</a>
+        </div>
+      </div>
+
+      <div class="manus-tip">
+        <div class="manus-tip-icon">🤖</div>
+        <div class="manus-tip-body">
+          <strong>Stuck at any point? Use Manus to guide you.</strong>
+          Take a screenshot of wherever you are on screen, open a new Manus task, upload the screenshot, and type: <em>"I am setting up the Meta Ads automation skill and I am stuck here — what should I do next?"</em> Manus will read your screenshot and walk you through the next step.
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- STEP 1: META DEVELOPER APP -->
+    <div class="section">
+      <div class="section-label">Setup — Part 1 of 3</div>
+      <h2>Meta Developer App &amp; System User Token</h2>
+      <p>This is the most important part of the setup. You are creating a registered application inside Meta's developer platform, then generating a permanent token that Manus will use to create ads on your behalf.</p>
+
+      <div class="inline-warning">
+        <strong>⚠ Before You Start</strong>
+        You must have a Meta Business Manager account and an active ad account before completing these steps. If you do not have these, set them up first at <a href="https://business.facebook.com" target="_blank" rel="noopener" style="color: inherit; font-weight: 600;">business.facebook.com</a>.
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <span class="tag">Meta Developer Portal</span>
+            <h3>Create a Developer App</h3>
+            <p>Go to <strong>developers.facebook.com</strong> → click <strong>My Apps</strong> → <strong>Create App</strong>. Select <strong>Business</strong> as the app type. Give it a name (e.g. "TAM Ad Automation"). Connect it to your Business Manager account.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <span class="tag">Meta Developer Portal</span>
+            <h3>Add the Marketing API Use Case</h3>
+            <p>Inside your new app, go to <strong>Use Cases</strong> → find <strong>Advertise</strong> → click <strong>Set Up</strong>. This adds the Marketing API permissions your app needs to create ads.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <span class="tag">Meta Business Manager</span>
+            <h3>Create a System User</h3>
+            <p>Go to <strong>business.facebook.com</strong> → <strong>Business Settings</strong> → <strong>Users</strong> → <strong>System Users</strong> → click <strong>Add</strong>. Name it (e.g. "Manus System User") and set the role to <strong>Admin</strong>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <span class="tag">Meta Business Manager</span>
+            <h3>Assign Your Ad Account to the System User</h3>
+            <p>Still in System Users — click your new System User → <strong>Add Assets</strong> → select <strong>Ad Accounts</strong> → choose your ad account → grant <strong>Full Control</strong>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <span class="tag">Meta Business Manager</span>
+            <h3>Generate a System User Token</h3>
+            <p>Click <strong>Generate New Token</strong> on your System User → select your Developer App → tick the <strong>ads_management</strong> and <strong>ads_read</strong> permissions → click <strong>Generate Token</strong>. Copy and save this token somewhere secure — you will not be able to see it again.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="inline-danger">
+        <strong>⚠ Disclaimer — Token Security</strong>
+        Your System User token grants full access to create and modify ads on your ad account. Never share it publicly, paste it into a chat, or store it in an unsecured location. TAM is not responsible for any unauthorised use of your token or any resulting account actions by Meta.
+      </div>
+
+      <div class="manus-tip">
+        <div class="manus-tip-icon">🤖</div>
+        <div class="manus-tip-body">
+          <strong>Getting lost in Meta's interface?</strong>
+          Meta's Business Manager UI changes regularly. If any of the above steps don't match what you're seeing on screen, take a screenshot and ask Manus: <em>"I'm trying to create a System User in Meta Business Manager — this is what I'm seeing. What should I click next?"</em>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- STEP 2: GOOGLE CLOUD -->
+    <div class="section">
+      <div class="section-label">Setup — Part 2 of 3</div>
+      <h2>Google Cloud Console — Drive API &amp; OAuth</h2>
+      <p>This part allows Manus to access your Google Drive folder to download your creative assets. You are enabling the Drive API and creating a set of credentials (a Client ID and Client Secret) that Manus will use to authenticate.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <span class="tag">Google Cloud Console</span>
+            <h3>Create a New Project</h3>
+            <p>Go to <strong>console.cloud.google.com</strong>. At the top of the page, click the project selector dropdown → click <strong>New Project</strong> → give it a name (e.g. "TAM Ad Automation") → click <strong>Create</strong>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <span class="tag">Google Cloud Console</span>
+            <h3>Enable the Google Drive API</h3>
+            <p>From your project dashboard, click the <strong>APIs and services</strong> tile → click <strong>Enable APIs and Services</strong> → search for <strong>Google Drive API</strong> → click it → click <strong>Enable</strong>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <span class="tag">Google Cloud Console</span>
+            <h3>Configure the OAuth Consent Screen</h3>
+            <p>Go to <strong>Credentials</strong> in the left menu. You will see a yellow banner prompting you to configure the consent screen — click it. Work through the 4-step wizard: set the app name to <strong>"TAM Ad Automation"</strong>, add your email, and complete the steps. Set the audience to <strong>External</strong>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <span class="tag">Google Cloud Console</span>
+            <h3>Create OAuth Credentials</h3>
+            <p>Back on the Credentials page → click <strong>Create Credentials</strong> → select <strong>OAuth client ID</strong> → choose <strong>Desktop app</strong> as the application type → name it <strong>"Manus Desktop Client"</strong> → click <strong>Create</strong>. Download the JSON file — you will need the Client ID and Client Secret from it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="manus-tip">
+        <div class="manus-tip-icon">🤖</div>
+        <div class="manus-tip-body">
+          <strong>Google Cloud's interface can be confusing.</strong>
+          If you can't find a button or the page looks different to what's described above, take a screenshot and upload it to Manus with the message: <em>"I'm setting up Google OAuth credentials for the Meta Ads automation — I'm stuck here. What do I do next?"</em>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- STEP 3: MANUS SKILL -->
+    <div class="section">
+      <div class="section-label">Setup — Part 3 of 3</div>
+      <h2>Setting Up the Skill in Manus</h2>
+      <p>Once you have your Meta System User token and your Google OAuth credentials, the final step is configuring the skill inside Manus so it can use them.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <span class="tag">Manus AI</span>
+            <h3>Start a New Task in Manus</h3>
+            <p>Open <strong>manus.im</strong> and start a new task. Tell Manus: <em>"I want to set up the Meta Ads automation skill. I have my System User token and my Google OAuth credentials ready."</em> Manus will walk you through the rest of the configuration interactively.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <span class="tag">Manus AI</span>
+            <h3>Provide Your Credentials When Asked</h3>
+            <p>Manus will ask you for your Meta System User token, your Ad Account ID, your Facebook Page ID, your Google Client ID, and your Google Client Secret. Have these ready to paste in when prompted.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <span class="tag">Manus AI</span>
+            <h3>Run Your First Test</h3>
+            <p>Once setup is complete, test the skill by providing a Google Drive folder link containing a single creative. Tell Manus which campaign to use and confirm the destination URL. Review the PAUSED ad in Meta Ads Manager before activating anything.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="inline-warning">
+        <strong>⚠ Start Small</strong>
+        On your first run, use a single creative in a test campaign. Do not attempt to upload 20+ creatives across multiple ad accounts until you have confirmed the skill is working correctly on your own account. Running high volumes of API calls too quickly is a known trigger for Meta account flags.
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- RISK SECTION -->
+    <div class="section">
+      <div class="section-label">Know the Risks</div>
+      <h2>What Can Go Wrong</h2>
+      <p>This is not a scare tactic — these are real risks that you need to understand before you begin. TAM has documented these based on how Meta's systems work and the most common failure points reported by users of API-based automation.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" style="background:#ef4444;">!</div>
+          <div class="step-body">
+            <h3>Ad Account Bans</h3>
+            <p>Meta can restrict or permanently ban ad accounts that it detects are being used in ways that violate its policies. Automated ad creation via the API is permitted — but only when done through a properly registered Developer App. Accounts using unofficial methods, shared tokens, or unusually high API call volumes are at higher risk.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:#ef4444;">!</div>
+          <div class="step-body">
+            <h3>Token Compromise</h3>
+            <p>If your System User token is exposed or shared, a third party could use it to create, modify, or delete ads on your account. Always store your token securely and regenerate it immediately if you believe it has been compromised.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:#ef4444;">!</div>
+          <div class="step-body">
+            <h3>Policy Changes</h3>
+            <p>Meta updates its API policies, rate limits, and advertising rules regularly. This guide reflects the setup as of the date it was published. TAM cannot guarantee that these steps will remain accurate or that this automation will remain compliant with future Meta policy changes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="inline-danger">
+        <strong>⚠ Final Disclaimer</strong>
+        TAM, The Agency Mentor, and Cormac Gray provide this guide as-is, with no warranty of any kind. We are not liable for ad account bans, loss of advertising access, financial loss, or any other outcome arising from your use of this automation. You use this guide entirely at your own risk.
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- MANUS HELP CTA -->
+    <div class="section" style="text-align: center; padding-bottom: 0;">
+      <div class="section-label" style="text-align:center;">Need Help?</div>
+      <h2 style="text-align:center;">When in Doubt, Ask Manus</h2>
+      <p style="text-align:center; max-width: 540px; margin: 0 auto 24px;">At any point during setup, if you are unsure what to do next — take a screenshot of your screen and upload it to Manus. It will read exactly where you are and tell you what to click next.</p>
+      <div class="manus-tip" style="max-width: 560px; margin: 0 auto 0; text-align:left;">
+        <div class="manus-tip-icon">🤖</div>
+        <div class="manus-tip-body">
+          <strong>Suggested prompt to use</strong>
+          <em>"I am setting up the Meta Ads automation skill and I am stuck. Here is a screenshot of where I am. What should I do next?"</em>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+
+  <!-- FOOTER DISCLAIMER -->
+  <div class="footer-disclaimer">
+    <div class="container">
+      <p><strong>Disclaimer:</strong> This guide is provided by The Agency Mentor for educational purposes only. TAM and Cormac Gray are not responsible for any ad account bans, restrictions, financial losses, or other consequences arising from the use of this automation. You proceed entirely at your own risk.</p>
+      <p>Meta's policies change frequently. Always verify that your use of the Meta Marketing API complies with Meta's current Terms of Service, Advertising Policies, and Developer Platform Terms before proceeding.</p>
+      <p style="margin-top: 16px; color: rgba(255,255,255,0.35); font-size: 12px;">© The Agency Mentor. All rights reserved.</p>
+    </div>
+  </div>
+
+</body>
+</html>
